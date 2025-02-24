@@ -3,7 +3,7 @@
     "name": "FIV Progressive Web Application",
     "description": "FIV PWA",
     "start_url": "https://lukasx999.github.io/pwa/",
-    "display": "browser",
+    "display": "standalone",
     "prefer_related_applications": false,
     "icons": [
         {
