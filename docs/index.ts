@@ -2,7 +2,7 @@ const ADDRESS = "localhost:3000";
 
 
 
-window.onload = () => {
+window.onload = async () => {
     const buttonSubmit = document.getElementById("button_submit")! as HTMLButtonElement;
     const textboxMessage = document.getElementById("textbox_message")! as HTMLInputElement;
 
@@ -11,6 +11,8 @@ window.onload = () => {
         console.log("Submitted Message", msg);
     };
 
+    const data = await fetch(`${ADDRESS}/data`);
+    console.log(data);
 
     console.log("greetings");
 }
