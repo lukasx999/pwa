@@ -1,4 +1,4 @@
-const SERVER = "https://172.31.180.59:3000";
+const SERVER = "http://172.31.180.59:3000";
 async function renderMessages() {
     const res = await fetch(`${SERVER}/messages`);
     const msg = await res.json();
