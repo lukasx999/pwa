@@ -1,12 +1,15 @@
-"use strict";
 const express = require('express');
 const app = express();
 const PORT = 3000;
-app.get('/data', (req, res) => {
-    res.json({
-        "foo": "bar"
-    });
+let messages = [];
+messages.push({
+    author: "John Doe",
+    content: "sup",
+});
+app.get('/messages', (_req, res) => {
+    res.json(JSON.stringify(messages));
 });
 app.listen(PORT, () => {
     console.log(`Example app listening on port ${PORT}`);
 });
+export {};
