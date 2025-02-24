@@ -1,4 +1,5 @@
 "use strict";
+const ADDRESS = "localhost:3000";
 window.onload = () => {
     const buttonSubmit = document.getElementById("button_submit");
     const textboxMessage = document.getElementById("textbox_message");
