@@ -1,8 +1,8 @@
 const SERVER = "172.31.180.59:3000";
 async function renderMessages() {
     const msg = await fetch(`${SERVER}/messages`);
-    console.log(msg);
     const messages = JSON.parse(await msg.text());
+    console.log(messages);
     const p = document.createElement("p");
     for (const message of messages) {
         p.appendChild(document.createTextNode(message.content));
