@@ -1,4 +1,4 @@
-const express = require('express');
+import express from "express";
 const app = express();
 const PORT = 3000;
 let messages = [];
@@ -12,4 +12,3 @@ app.get('/messages', (_req, res) => {
 app.listen(PORT, () => {
     console.log(`Example app listening on port ${PORT}`);
 });
-export {};
