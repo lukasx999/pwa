@@ -11,6 +11,7 @@ const SERVER = "172.31.180.59:3000";
 function renderMessages() {
     return __awaiter(this, void 0, void 0, function* () {
         const msg = yield fetch(`${SERVER}/messages`);
+        console.log(msg);
         const messages = JSON.parse(yield msg.text());
         const p = document.createElement("p");
         for (const message of messages) {

@@ -5,6 +5,7 @@ const SERVER = "172.31.180.59:3000";
 
 async function renderMessages() {
     const msg = await fetch(`${SERVER}/messages`);
+    console.log(msg);
     const messages: Message[] = JSON.parse(await msg.text());
     const p = document.createElement("p");
 
