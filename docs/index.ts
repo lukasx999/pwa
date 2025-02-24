@@ -3,7 +3,7 @@ const ADDRESS = "localhost:3000";
 
 
 window.onload = () => {
-    const buttonSubmit   = document.getElementById("button_submit")! as HTMLButtonElement;
+    const buttonSubmit = document.getElementById("button_submit")! as HTMLButtonElement;
     const textboxMessage = document.getElementById("textbox_message")! as HTMLInputElement;
 
     buttonSubmit.onclick = () => {
