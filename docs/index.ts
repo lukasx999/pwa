@@ -27,5 +27,4 @@ window.onload = async () => {
         console.log("Submitted Message", msg);
     };
 
-    console.log("greetings");
 }

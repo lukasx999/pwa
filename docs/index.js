@@ -16,6 +16,5 @@ window.onload = async () => {
         const msg = textboxMessage.value;
         console.log("Submitted Message", msg);
     };
-    console.log("greetings");
 };
 export {};
