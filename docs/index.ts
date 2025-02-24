@@ -1,4 +1,3 @@
-
 window.onload = () => {
-    console.log("greetings!");
+    console.log("greetings");
 }
