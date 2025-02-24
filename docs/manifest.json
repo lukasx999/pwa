@@ -1,0 +1,13 @@
+{
+    "name": "FIV Progressive Web Application",
+    "start_url": "https://lukasx999.github.io/pwa/",
+    "display": "browser",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/icon.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}
