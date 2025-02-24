@@ -1,6 +1,6 @@
 import { Message } from "./common.js";
 
-const SERVER = "localhost:3000";
+const SERVER = "172.31.180.59:3000";
 
 
 async function renderMessages() {
@@ -25,9 +25,6 @@ window.onload = async () => {
         const msg: string = textboxMessage.value;
         console.log("Submitted Message", msg);
     };
-
-    const data = await fetch(`${SERVER}/data`);
-    console.log(data);
 
     console.log("greetings");
 }

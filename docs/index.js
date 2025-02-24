@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const SERVER = "localhost:3000";
+const SERVER = "172.31.180.59:3000";
 function renderMessages() {
     return __awaiter(this, void 0, void 0, function* () {
         const msg = yield fetch(`${SERVER}/messages`);
@@ -26,8 +26,6 @@ window.onload = () => __awaiter(void 0, void 0, void 0, function* () {
         const msg = textboxMessage.value;
         console.log("Submitted Message", msg);
     };
-    const data = yield fetch(`${SERVER}/data`);
-    console.log(data);
     console.log("greetings");
 });
 export {};
