@@ -1,6 +1,6 @@
 import { Message } from "./common.js";
 
-const SERVER = "172.31.180.59:3000";
+const SERVER = "http://172.31.180.59:3000";
 
 
 async function renderMessages() {
