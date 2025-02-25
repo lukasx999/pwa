@@ -1,23 +1,28 @@
 const SERVER = "http://172.31.180.59:3000";
 async function renderMessages() {
     const res = await fetch(`${SERVER}/messages`);
-    const msg = await res.json();
-    console.log(msg);
-    /*
-    const messages: Message[] = JSON.parse(await msg.text());
+    const messages = await res.json();
+    const div = document.getElementById("div_messages");
     const p = document.createElement("p");
-
     for (const message of messages) {
-        p.appendChild(document.createTextNode(message.content));
+        const msg = `[${message.author}] ${message.content}`;
+        p.appendChild(document.createTextNode(msg));
     }
-    */
+    div.appendChild(p);
 }
 window.onload = async () => {
     const buttonSubmit = document.getElementById("button_submit");
     const textboxMessage = document.getElementById("textbox_message");
     renderMessages();
-    buttonSubmit.onclick = () => {
-        const msg = textboxMessage.value;
+    buttonSubmit.onclick = async () => {
+        const msg = {
+            author: "Bob",
+            content: textboxMessage.value
+        };
+        await fetch(`${SERVER}/send`, {
+            method: "POST",
+            body: JSON.stringify(msg)
+        });
         console.log("Submitted Message", msg);
     };
 };
