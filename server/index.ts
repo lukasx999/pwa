@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import https from "https";
 import fs from "fs";
+import { dirname } from "node:path";
 
 import { Message } from "../docs/common.js";
 
@@ -31,12 +32,10 @@ app.post('/send', (req, _res) => {
 
 
 
-
-
-const key = fs.readFileSync(__dirname + '/certs/selfsigned.key');
-const cert = fs.readFileSync(__dirname + '/certs/selfsigned.crt');
+const key  = fs.readFileSync('./certs/selfsigned.key');
+const cert = fs.readFileSync('./certs/selfsigned.crt');
 const options = {
-  key: key,
+  key:  key,
   cert: cert
 };
 
