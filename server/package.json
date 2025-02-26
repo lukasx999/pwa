@@ -5,18 +5,18 @@
     "type": "module",
     "scripts": {
         "ts": "tsc -w",
-        "serve": "nodemon"
+        "serve": "nodemon",
+        "certs": "openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./certs/selfsigned.key -out ./certs/selfsigned.crt"
+
     },
     "author": "",
     "license": "MIT",
     "description": "",
     "dependencies": {
-        "body-parser": "^1.20.3",
         "cors": "^2.8.5",
         "express": "^4.21.2"
     },
     "devDependencies": {
-        "@types/body-parser": "^1.19.5",
         "@types/cors": "^2.8.17",
         "@types/express": "^5.0.0",
         "@types/node": "^22.13.5",
