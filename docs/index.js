@@ -21,7 +21,9 @@ window.onload = async () => {
         };
         await fetch(`${SERVER}/send`, {
             method: "POST",
-            body: JSON.stringify(msg)
+            //headers: { 'Content-Type': 'application/json' },
+            //body: JSON.stringify(msg)
+            body: JSON.stringify({ foo: "bar" })
         });
         console.log("Submitted Message", msg);
     };
