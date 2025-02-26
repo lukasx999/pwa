@@ -1,3 +1,5 @@
+console.log(location.protocol);
+// TODO: check if over https
 const SERVER = "https://172.31.182.140:3000";
 async function renderMessages() {
     const res = await fetch(`${SERVER}/messages`);
@@ -25,7 +27,8 @@ async function buttonSubmitClick(content) {
 async function main() {
     const buttonSubmit = document.getElementById("button_submit");
     const textboxMessage = document.getElementById("textbox_message");
-    setInterval(renderMessages, 500);
+    //setInterval(renderMessages, 500);
+    renderMessages();
     buttonSubmit.onclick = async () => buttonSubmitClick(textboxMessage.value);
 }
 window.onload = main;

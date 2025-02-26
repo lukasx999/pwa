@@ -1,5 +1,7 @@
 import { Message } from "./common.js";
 
+console.log(location.protocol);
+// TODO: check if over https
 const SERVER = "https://172.31.182.140:3000";
 
 
@@ -38,7 +40,8 @@ async function main() {
     const buttonSubmit = document.getElementById("button_submit")! as HTMLButtonElement;
     const textboxMessage = document.getElementById("textbox_message")! as HTMLInputElement;
 
-    setInterval(renderMessages, 500);
+    //setInterval(renderMessages, 500);
+    renderMessages();
     buttonSubmit.onclick = async () => buttonSubmitClick(textboxMessage.value);
 }
 

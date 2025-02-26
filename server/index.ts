@@ -1,13 +1,13 @@
 import express from "express";
-import cors from "cors";
-import https from "https";
-import fs from "fs";
-import { dirname } from "node:path";
+import cors    from "cors";
+import https   from "https";
+import fs      from "fs";
 
 import { Message } from "../docs/common.js";
 
 const app = express();
-const PORT = 3000;
+const PORT_HTTPS = 3000;
+const PORT_HTTP = 4000;
 
 app.use(cors());
 app.use(express.static("../docs/"));
@@ -41,6 +41,10 @@ const options = {
 
 const server = https.createServer(options, app);
 
-server.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`);
+server.listen(PORT_HTTPS, () => {
+    console.log(`Example app listening on port ${PORT_HTTPS} over https`);
+});
+
+app.listen(PORT_HTTP, () => {
+    console.log(`Example app listening on port ${PORT_HTTP} over http`);
 });
