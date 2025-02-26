@@ -1,44 +1,45 @@
 import { Message } from "./common.js";
 
-const SERVER = "http://172.31.180.59:3000";
+const SERVER = "http://172.31.182.140:3000";
 
 
 async function renderMessages() {
     const res = await fetch(`${SERVER}/messages`);
     const messages = await res.json() as Message[];
 
-    const div = document.getElementById("div_messages")! as HTMLDivElement;
-    const p = document.createElement("p");
+    const ul = document.getElementById("message_list")! as HTMLUListElement;
+    ul.innerHTML = ""; // clear list
 
     for (const message of messages) {
-        const msg = `[${message.author}] ${message.content}`;
-        p.appendChild(document.createTextNode(msg));
+        const li = document.createElement("li");
+        li.innerHTML = `[${message.author}] ${message.content}`;
+        ul.appendChild(li);
     }
-    div.appendChild(p);
 }
 
 
-window.onload = async () => {
+async function buttonSubmitClick(content: string) {
+    const msg: Message = {
+        author: "Bob",
+        content: content
+    };
+
+    await fetch(`${SERVER}/send`, {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(msg)
+    });
+
+    console.log("Submitted Message", msg);
+}
+
+
+async function main() {
     const buttonSubmit = document.getElementById("button_submit")! as HTMLButtonElement;
     const textboxMessage = document.getElementById("textbox_message")! as HTMLInputElement;
 
-    renderMessages();
-
-    buttonSubmit.onclick = async () => {
-        const msg: Message = {
-            author: "Bob",
-            content: textboxMessage.value
-        };
-
-        await fetch(`${SERVER}/send`, {
-            method: "POST",
-            //headers: { 'Content-Type': 'application/json' },
-            //body: JSON.stringify(msg)
-            body: JSON.stringify({ foo: "bar" })
-        });
-
-        console.log("Submitted Message", msg);
-
-    };
-
+    setInterval(renderMessages, 500);
+    buttonSubmit.onclick = async () => buttonSubmitClick(textboxMessage.value);
 }
+
+window.onload = main;

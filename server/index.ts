@@ -9,8 +9,8 @@ const PORT = 3000;
 
 app.use(cors());
 app.use(express.static("../docs/"));
-//app.use(express.json())
-app.use(bodyParser.json())
+app.use(express.json())
+//app.use(bodyParser.json())
 
 
 let messages: Message[] = [];
@@ -24,10 +24,9 @@ app.get('/messages', (_req, res) => {
     res.json(messages);
 });
 
-app.post('/send', (req, res) => {
-    const body = req.body;
-    console.log(body);
-    res.send(body);
+app.post('/send', (req, _res) => {
+    const body: Message = req.body;
+    messages.push(body);
 });
 
 app.listen(PORT, () => {
