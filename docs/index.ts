@@ -20,7 +20,6 @@ async function renderMessages() {
     }
 }
 
-
 async function buttonSubmitClick(content: string) {
     const msg: Message = {
         author: "Bob",
@@ -55,9 +54,6 @@ async function main() {
             textboxMessage.value = ""; // clear textbox
         }
     };
-
-
-
 }
 
 window.onload = main;

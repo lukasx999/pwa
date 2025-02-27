@@ -19,6 +19,8 @@ app.get('/messages', (_req, res) => {
 });
 app.post('/send', (req, _res) => {
     const body = req.body;
+    if ("time" in body)
+        throw new Error("Client must not specify time of message");
     body.time = new Date().toTimeString().slice(0, 8);
     messages.push(body);
 });
