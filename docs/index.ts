@@ -1,8 +1,9 @@
 import { Message } from "./common.js";
 
-console.log(location.protocol);
-// TODO: check if over https
-const SERVER = "https://172.31.182.140:3000";
+const PROTO  = location.protocol;
+const IP     = "172.31.182.140";
+const PORT   = PROTO === "https:" ? "3000" : "4000";
+const SERVER = `${PROTO}//${IP}:${PORT}`;
 
 
 async function renderMessages() {
@@ -14,7 +15,7 @@ async function renderMessages() {
 
     for (const message of messages) {
         const li = document.createElement("li");
-        li.innerHTML = `[${message.author}] ${message.content}`;
+        li.innerHTML = `[${message.time}] [${message.author}] ${message.content}`;
         ul.appendChild(li);
     }
 }
@@ -35,14 +36,28 @@ async function buttonSubmitClick(content: string) {
     console.log("Submitted Message", msg);
 }
 
-
 async function main() {
     const buttonSubmit = document.getElementById("button_submit")! as HTMLButtonElement;
     const textboxMessage = document.getElementById("textbox_message")! as HTMLInputElement;
 
-    //setInterval(renderMessages, 500);
-    renderMessages();
-    buttonSubmit.onclick = async () => buttonSubmitClick(textboxMessage.value);
+    setInterval(renderMessages, 100);
+
+    textboxMessage.focus();
+
+    buttonSubmit.onclick = () => {
+        buttonSubmitClick(textboxMessage.value);
+        textboxMessage.value = ""; // clear textbox
+    };
+
+    textboxMessage.onkeydown = event => {
+        if (event.key === "Enter") {
+            buttonSubmitClick(textboxMessage.value);
+            textboxMessage.value = ""; // clear textbox
+        }
+    };
+
+
+
 }
 
 window.onload = main;

@@ -11,6 +11,7 @@ app.use(express.json());
 let messages = [];
 messages.push({
     author: "John Doe",
+    time: "now",
     content: "sup",
 });
 app.get('/messages', (_req, res) => {
@@ -18,6 +19,7 @@ app.get('/messages', (_req, res) => {
 });
 app.post('/send', (req, _res) => {
     const body = req.body;
+    body.time = new Date().toTimeString().slice(0, 8);
     messages.push(body);
 });
 const key = fs.readFileSync('./certs/selfsigned.key');

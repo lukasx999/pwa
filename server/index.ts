@@ -7,7 +7,7 @@ import { Message } from "../docs/common.js";
 
 const app = express();
 const PORT_HTTPS = 3000;
-const PORT_HTTP = 4000;
+const PORT_HTTP  = 4000;
 
 app.use(cors());
 app.use(express.static("../docs/"));
@@ -15,8 +15,10 @@ app.use(express.json())
 
 
 let messages: Message[] = [];
+
 messages.push({
     author: "John Doe",
+    time: "now",
     content: "sup",
 });
 
@@ -27,6 +29,7 @@ app.get('/messages', (_req, res) => {
 
 app.post('/send', (req, _res) => {
     const body: Message = req.body;
+    body.time = new Date().toTimeString().slice(0, 8);
     messages.push(body);
 });
 
